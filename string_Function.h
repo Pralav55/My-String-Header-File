@@ -44,6 +44,8 @@ void Help()
 	printf("\t| 26. StrSortRev(char *str)\t\t\t\t- Sorts the string alphabetically but in reverse\t\t\t\t|\n");
 	printf("\t| 27. StrRemoveNum(char *str)\t\t\t\t- Removes number from the string \t\t\t\t\t\t|\n");
 	printf("\t| 28. StrReplaceChar(char *str,char ch1,char ch2)\t- Replace an alphabet in the following string\t\t\t\t\t|\n");
+	printf("\t| 29. StrCmp_With_Case(char *str1,char *str2)\t\t- Returns 0 if both string are same neglecting cases else return 1\t\t|\n");
+	printf("\t| 30. ASCII_sum(char *str)\t\t\t\t- returns the addition of all integer values of particular character\t\t|\n");
 	printf("\t----------------------------------------------------------------------------------------------------------------------------------------\n");
 }
 
@@ -613,5 +615,57 @@ void StrReplaceChar(char *str,char ch1,char ch2 )
 		str++;
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////////
+//Returns 0 if both string are same else return 1
+///////////////////////////////////////////////////////////////////////////////////
+int StrCmp_With_Case(char *str1,char *str2)
+{
+	int flag=1;
+	
+	int size1 = StrLenX(str1);
+	int size2 = StrLenX(str2);
+	
+	if(size1==size2)
+	{
+		flag=0;
+		while(*str1 != '\0')
+		{
+			if(*str1 == *str2 || *str1 == ((*str2)+32) || *str1 ==((*str2)-32))
+			{
+				str1++;
+				str2++;
+			}
+			else
+			{
+				flag=1;
+				break;
+			}
+		}	
+	}
+	return flag;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//returns the addition of all integer values of particular character
+///////////////////////////////////////////////////////////////////////////////////////////////////
+int ASCII_sum(char *str)
+{
+	int sum =0;
+	
+	while(*str != '\0')
+	{
+		sum = sum + *str;
+		str++;
+	}
+	
+	return sum;
+}
+
+
+
+
+
+
 
 
